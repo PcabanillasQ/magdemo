@@ -1,9 +1,23 @@
+import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
+import routes from "./routes";
+
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <h1>MAG DEMO</h1>
-      <button className="btn btn-primary">boton</button>
-    </div>
+      {routes.map((route, i) => (
+        <Link className="btn btn-primary" to={route.path}>
+          {route.name}
+        </Link>
+      ))}
+
+      <Switch>
+        {routes.map((route, i) => (
+          <Route exact key={i} path={route.path} component={route.component} />
+        ))}
+        <Redirect to="/suscipcion" />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
