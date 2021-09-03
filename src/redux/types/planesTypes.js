@@ -1,0 +1,4 @@
+export const GET_PLANES_OK = "GET_PLANES_OK";
+export const GET_PLANES_ERROR = "GET_PLANES_ERROR";
+
+export const SET_PLAN_SELECTED = "SET_PLAN_SELECTED";

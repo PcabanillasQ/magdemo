@@ -1,0 +1,5 @@
+:root{
+  --wrapper: 576px;
+  --color-item-disabled: #ccc;
+}
+$list-group-disabled-color: var(--color-item-disabled);
