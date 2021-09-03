@@ -26,27 +26,25 @@ const Suscription = () => {
     //eslint-disable-next-line
   }, [planes, visible]);
   return (
-    <div className="container-fluid px-5 py-4">
-      <div className="row">
-        <div className="col-sm-12 text-center mb-3">
-          <TogglePlan
-            planes={["Plan Standar", "Plan Premium"]}
-            {...{ checked, setChecked }}
+    <div className="row">
+      <div className="col-sm-12 text-center mb-3">
+        <TogglePlan
+          planes={["Plan Standar", "Plan Premium"]}
+          {...{ checked, setChecked }}
+        />
+      </div>
+      <div className="col-sm-12">
+        {error}
+        {!loading ? (
+          <CardPlan
+            plan={planes[visible]}
+            currency="S/"
+            buttonName={"Suscribirme"}
+            color="dark"
           />
-        </div>
-        <div className="col-sm-12">
-          {error}
-          {!loading ? (
-            <CardPlan
-              plan={planes[visible]}
-              currency="S/"
-              buttonName={"Suscribirme"}
-              color="dark"
-            />
-          ) : (
-            <Spinner />
-          )}
-        </div>
+        ) : (
+          <Spinner />
+        )}
       </div>
     </div>
   );

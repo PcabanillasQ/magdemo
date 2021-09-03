@@ -1,5 +1,12 @@
 :root{
+  --disabled: #ccc;
   --wrapper: 576px;
-  --color-item-disabled: #ccc;
+  --color-item-disabled: var(--disabled);
+  --width-icon-alert:6rem;
 }
+
+
+// Bootstrap
 $list-group-disabled-color: var(--color-item-disabled);
+$btn-link-color: #000;
+$btn-link-hover-color: #333;
