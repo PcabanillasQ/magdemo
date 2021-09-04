@@ -1,0 +1,9 @@
+.navbar{
+  height: var(--height-navbar);
+  &__icon-back{
+  position: absolute;
+  cursor: pointer;
+  padding:.5rem;
+  margin-left: 1rem;
+  }
+}

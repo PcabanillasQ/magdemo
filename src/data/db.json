@@ -2,6 +2,7 @@
   "planes": [
     {
       "id":1,
+      "name":"Plan Estándar",
       "price": 29,
       "type":0,
       "title": "Lorem ipsum dolor sit amet consectetur adipisicing. Recusandae dolor molestiae inventor",
@@ -14,6 +15,7 @@
     },
     {
       "id":2,
+      "name":"Plan Premium",
       "price": 59,
       "type":0,
       "title": "Lorem ipsum dolor sit amet consectetur adipisicing. Recusandae dolor molestiae inventor",
@@ -24,5 +26,6 @@
         {"activo":true,"desciption":"Consectetur, veritatis, ratione autem nemo totam assumenda rem  labore voluptatum quos cum, placeat!"}
       ]
     }
-  ]
+  ],
+  "card":{}
 }

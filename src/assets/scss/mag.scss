@@ -1,9 +1,12 @@
 @import "./mag/variables";
 @import "bootstrap/scss/bootstrap.scss";
+@import "./mag/navbar";
 @import "./mag/card-plan";
 @import "./mag/btn-toggle";
 @import "./mag/spinner";
 @import "./mag/icon-alert";
+@import "./mag/card-plan-subscribed";
+@import "./mag/input-format";
 
 *{padding: 0;  margin: 0;}
 
@@ -14,6 +17,16 @@ body{
 .wrapper {
   max-width: var(--wrapper);
   margin: 0 auto;
+  position: relative;
+}
+
+.personalInfo{
+
+  min-height: calc(100vh - var(--height-navbar) - 3rem);
+
 }
 
 
+.iconSvg{
+  border: 1px solid yellow;
+}

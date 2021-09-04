@@ -11,6 +11,7 @@ const Suscription = () => {
 
   const dispatch = useDispatch();
   const { data: planes, loading, error } = useSelector((store) => store.planes);
+  const namesPlanes = planes.map((plan) => plan.name);
 
   let visible = !checked ? 0 : 1;
 
@@ -28,10 +29,7 @@ const Suscription = () => {
   return (
     <div className="row">
       <div className="col-sm-12 text-center mb-3">
-        <TogglePlan
-          planes={["Plan Standar", "Plan Premium"]}
-          {...{ checked, setChecked }}
-        />
+        <TogglePlan planes={namesPlanes} {...{ checked, setChecked }} />
       </div>
       <div className="col-sm-12">
         {error}

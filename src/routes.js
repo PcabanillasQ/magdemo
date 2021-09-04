@@ -6,16 +6,19 @@ const routes = [
   {
     path: "/suscipcion",
     name: "Suscribirme",
+    back: false,
     component: Suscription,
   },
   {
     path: "/datos",
     name: "Tus Datos",
+    back: true,
     component: PersonalInfo,
   },
   {
     path: "/confirmacion",
     name: "Mag",
+    back: false,
     component: Confirmation,
   },
 ];

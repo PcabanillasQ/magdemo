@@ -1,0 +1,15 @@
+.card-plan-subscribed{
+  position: absolute;
+
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  cursor: pointer;
+  &__features{
+    overflow: hidden;
+    height: 0px;
+  }
+  .features-hidden{
+    height:fit-content;
+  }
+}

@@ -1,8 +1,12 @@
+import React from "react";
 import IconAlert from "components/shared/IconAlert";
 import PriceCardPlan from "components/suscription/PriceCardPlan";
-import React from "react";
+import { useSelector } from "react-redux";
 
 const Confirmation = () => {
+  const { planSelected } = useSelector((store) => store.planes);
+  const { name, price, type, title } = planSelected;
+
   return (
     <div className="row text-center">
       <div className="col-sm-12">
@@ -10,16 +14,11 @@ const Confirmation = () => {
           <IconAlert icon="bi bi-check" />
 
           <div className="h4 mt-4">Bienvenido, has adquirido el</div>
-          <h1 className="display-6 fw-bold">Plan Premium</h1>
-          {/* <PriceCardPlan price={price} currency={currency} type={type} /> */}
-          <PriceCardPlan price={29} currency="S/" type={0} normal />
+          <h1 className="display-6 fw-bold">{name}</h1>
+          <PriceCardPlan price={price} currency="S/" type={type} normal />
+
           <div className="col-lg-10 mx-auto">
-            <p className="mb-4">
-              Quickly design and customize responsive mobile-first sites with
-              Bootstrap, the world’s most popular front-end open source toolkit,
-              featuring Sass variables and mixins, responsive grid system,
-              extensive prebuilt components, and powerful JavaScript plugins.
-            </p>
+            <p className="mb-4">{title}</p>
             <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
               <button
                 type="button"
