@@ -6,7 +6,8 @@
 @import "./mag/spinner";
 @import "./mag/icon-alert";
 @import "./mag/card-plan-subscribed";
-@import "./mag/input-format";
+@import "./mag/form";
+
 
 *{padding: 0;  margin: 0;}
 
@@ -21,12 +22,9 @@ body{
 }
 
 .personalInfo{
-
+padding-bottom: 7rem;
+border: 1px solid #000;
   min-height: calc(100vh - var(--height-navbar) - 3rem);
 
 }
 
-
-.iconSvg{
-  border: 1px solid yellow;
-}

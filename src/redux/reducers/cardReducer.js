@@ -17,7 +17,7 @@ export default function cardsReducer(state = initialState, action) {
         error: null,
       };
     case ADD_CARD_ERROR:
-      return { ...state, error: action.payload, loading: true };
+      return { ...state, error: action.payload, loading: false };
 
     default:
       return { ...state };

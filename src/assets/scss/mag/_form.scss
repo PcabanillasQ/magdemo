@@ -1,17 +1,26 @@
-.inputFormat {
+.formData{
+  .input-error{
+    font-size: 12px;
+  }
+}
+
+.inputForm {
   position: relative;
   input {
     padding-right: 3rem;
+    
   }
   span {
+    transition: right .3s ease-in;
     position: absolute;
-    right: 0;
+    right: var(--right-icon-input);
     top: 0;
     display: block;
     padding: 0 .8rem;
     i {
       font-size: 1.5rem;
       line-height: 1.5;
+   
     }
   }
 }

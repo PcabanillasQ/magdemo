@@ -4,6 +4,10 @@
   --color-item-disabled: var(--disabled);
   --width-icon-alert:6rem;
   --height-navbar: 4rem;
+  // Formulario
+  --color-error: var(--bs-danger);
+  --color-success: var(--bs-success);
+  --right-icon-input:0;
 }
 
 
@@ -11,3 +15,4 @@
 $list-group-disabled-color: var(--color-item-disabled);
 $btn-link-color: #000;
 $btn-link-hover-color: #333;
+
