@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { addDataCardAct } from "redux/actions/cardActions";
+import IconCreditCart from "assets/icons/credit-card.svg";
 import Input from "./Input";
 
 const FormDatos = ({ price }) => {
@@ -21,10 +22,10 @@ const FormDatos = ({ price }) => {
       setError(false);
       dispatch(
         addDataCardAct({
-          fullName: nombre,
-          serie: cardNum,
-          fecExp: fecExp,
-          cvc: codCV,
+          fullName: nombre.data,
+          serie: cardNum.data,
+          fecExp: fecExp.data,
+          cvc: codCV.data,
         })
       );
     } else {
@@ -93,7 +94,7 @@ const FormDatos = ({ price }) => {
           state={cardNum}
           setState={setCardNum}
           label="Numero de Tarjeta"
-          icon={<i className="bi bi-credit-card"></i>}
+          icon={IconCreditCart}
           placeholder=".... .... .... ...."
           messageHelp="El numero de tarjeta debe tener 16 dígitos"
           expRegular={expRegular.cardNum}
@@ -152,7 +153,7 @@ const FormDatos = ({ price }) => {
           </div>
         ) : null}
 
-        <button type="submit" className="btn btn-dark btn-lg mt-4 ">
+        <button type="submit" className="btn btn-dark btn-lg py-3 mt-4 ">
           Pagar S/.{price}.00
         </button>
       </div>

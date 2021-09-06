@@ -5,12 +5,12 @@
       "name":"Plan Estándar",
       "price": 29,
       "type":0,
-      "title": "Lorem ipsum dolor sit amet consectetur adipisicing. Recusandae dolor molestiae inventor",
+      "title": "Lorem ipsum dolor sit amet consectetur adipisicing. Recusandae dolor molestiae ",
       "features": [
-        {"activo":true,"desciption":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,  rem? Eligendi, alias. Incidunt"},
-        {"activo":true,"desciption":"Consectetur, veritatis, ratione autem nemo totam assumenda rem  labore voluptatum quos cum, placeat!"},
-        {"activo":false,"desciption":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,  rem? Eligendi, alias. Incidunt"},
-        {"activo":false,"desciption":"Consectetur, veritatis, ratione autem nemo totam assumenda rem  labore voluptatum quos cum, placeat!"}
+        {"activo":true,"desciption":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,  rem? Eligendi."},
+        {"activo":true,"desciption":"Consectetur, veritatis, ratione autem nemo totam assumenda rem  labore "},
+        {"activo":false,"desciption":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,  rem? Eligendi."},
+        {"activo":false,"desciption":"Consectetur, veritatis, ratione autem nemo totam assumenda rem  labore "}
       ]
     },
     {
@@ -18,12 +18,12 @@
       "name":"Plan Premium",
       "price": 59,
       "type":0,
-      "title": "Lorem ipsum dolor sit amet consectetur adipisicing. Recusandae dolor molestiae inventor",
+      "title": "Lorem ipsum dolor sit amet consectetur adipisicing. Recusandae dolor molestiae ",
       "features": [
-        {"activo":true,"desciption":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,  rem? Eligendi, alias. Incidunt"},
-        {"activo":true,"desciption":"Consectetur, veritatis, ratione autem nemo totam assumenda rem  labore voluptatum quos cum, placeat!"},
-        {"activo":true,"desciption":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,  rem? Eligendi, alias. Incidunt"},
-        {"activo":true,"desciption":"Consectetur, veritatis, ratione autem nemo totam assumenda rem  labore voluptatum quos cum, placeat!"}
+        {"activo":true,"desciption":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,  rem? Eligendi."},
+        {"activo":true,"desciption":"Consectetur, veritatis, ratione autem nemo totam assumenda rem  labore"},
+        {"activo":true,"desciption":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,  rem? Eligendi."},
+        {"activo":true,"desciption":"Consectetur, veritatis, ratione autem nemo totam assumenda rem  labore "}
       ]
     }
   ],

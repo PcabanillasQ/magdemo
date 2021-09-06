@@ -2,28 +2,35 @@ import Navbar from "components/shared/Navbar";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import routes from "./routes";
 
-import { useSelector } from "react-redux";
+
+import { Suspense } from "react";
+import Spinner from "components/shared/Spinner";
+
+import { Provider } from "react-redux";
+import store from "redux/store";
 
 function App() {
-  const { back } = useSelector((store) => store.planes);
-
   return (
     <BrowserRouter>
       <div className="wrapper">
-        <Navbar title="Mag." back={back} />
-        <div className="container-fluid px-5 py-4">
-          <Switch>
-            {routes.map((route, i) => (
-              <Route
-                exact
-                key={i}
-                path={route.path}
-                component={route.component}
-              />
-            ))}
-            <Redirect to="/suscipcion" />
-          </Switch>
-        </div>
+        <Provider store={store}>
+          <Navbar title="Mag." />
+          <Suspense fallback={<Spinner />}>
+            <div className="container-fluid px-5 py-4">
+              <Switch>
+                {routes.map((route, i) => (
+                  <Route
+                    exact
+                    key={i}
+                    path={route.path}
+                    component={route.component}
+                  />
+                ))}
+                <Redirect to="/suscipcion" />
+              </Switch>
+            </div>
+          </Suspense>
+        </Provider>
       </div>
     </BrowserRouter>
   );

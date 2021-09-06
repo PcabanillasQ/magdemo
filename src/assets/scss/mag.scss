@@ -1,5 +1,17 @@
 @import "./mag/variables";
-@import "bootstrap/scss/bootstrap.scss";
+// BOOStrap
+@import "bootstrap/scss/bootstrap-grid";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/utilities/api";
+
+// @import "bootstrap/scss/bootstrap.scss";
 @import "./mag/navbar";
 @import "./mag/card-plan";
 @import "./mag/btn-toggle";
@@ -12,18 +24,19 @@
 *{padding: 0;  margin: 0;}
 
 body{
-  background-color: $gray-200;
+  background-color: #ccc;
 }
 
 .wrapper {
+  min-width: var(--min-wrapper);
   max-width: var(--wrapper);
   margin: 0 auto;
   position: relative;
+ 
 }
 
 .personalInfo{
-padding-bottom: 7rem;
-border: 1px solid #000;
+  padding-bottom: 7rem;
   min-height: calc(100vh - var(--height-navbar) - 3rem);
 
 }

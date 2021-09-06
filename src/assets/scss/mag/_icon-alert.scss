@@ -5,14 +5,11 @@
   height:var(--width-icon-alert);
   background-color: #fff;
   border-radius: 50%;
-  line-height: 0;
-
+ 
   display: flex;
   justify-content: center;
   align-items: center;
-  i{
-    font-size: calc(var(--width-icon-alert) * 1.3);
-    color: var(--disabled);
-  }
+ img{ transform: scale(1.3);
+opacity:.4}
 }
 

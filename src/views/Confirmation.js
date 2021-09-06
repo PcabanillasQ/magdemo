@@ -1,6 +1,7 @@
 import React from "react";
 import IconAlert from "components/shared/IconAlert";
 import PriceCardPlan from "components/suscription/PriceCardPlan";
+import IconCheck from "assets/icons/check.svg";
 import { useSelector } from "react-redux";
 
 const Confirmation = () => {
@@ -11,7 +12,7 @@ const Confirmation = () => {
     <div className="row text-center">
       <div className="col-sm-12">
         <div className="confirmation px-4 py-5 ">
-          <IconAlert icon="bi bi-check" />
+          <IconAlert icon={IconCheck} />
 
           <div className="h4 mt-4">Bienvenido, has adquirido el</div>
           <h1 className="display-6 fw-bold">{name}</h1>

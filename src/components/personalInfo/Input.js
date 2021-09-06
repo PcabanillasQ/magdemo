@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import InputMask from "react-input-mask";
 
 const Input = ({
@@ -47,7 +47,7 @@ const Input = ({
               id={name}
               aria-describedby="nameHelp"
               autoComplete="off"
-              className={`form-control ${
+              className={`form-control form-control-lg ${
                 state.valid === true ? "is-valid " : ""
               } ${state.valid === false ? "is-invalid " : ""}`}
               mask={mask}
@@ -57,7 +57,11 @@ const Input = ({
               onBlur={validate}
             />
 
-            {icon ? <span>{icon}</span> : null}
+            {icon ? (
+              <span>
+                <img src={icon} alt="icono tarjeta" />
+              </span>
+            ) : null}
             <small id="nameHelp" className="input-error invalid-feedback">
               {messageHelp}
             </small>
@@ -67,7 +71,7 @@ const Input = ({
             <input
               // {...{ type, placeholder, value, onChange, name, required }}
               {...{ type, placeholder, name, required, step }}
-              className={`form-control ${
+              className={`form-control form-control-lg ${
                 state.valid === true ? "is-valid " : ""
               } ${state.valid === false ? "is-invalid " : ""}`}
               id={name}
@@ -77,7 +81,12 @@ const Input = ({
               onKeyUp={validate}
               onBlur={validate}
             />
-            {icon ? <span>{icon}</span> : null}
+            {icon ? (
+              <span>
+                {" "}
+                <img src={icon} alt="icono tarjeta" />
+              </span>
+            ) : null}
             <small id="nameHelp" className="input-error invalid-feedback">
               {messageHelp}
             </small>

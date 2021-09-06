@@ -7,7 +7,9 @@ const PriceCardPlan = ({ normal, price, currency, type }) => {
     <h5 className={`card-title ${normal ? "fw-bold" : "cardPlan__price"}`}>
       <span className="tipo-moneda">{currency}</span>
       <span className="monto">{price} </span>
-      <span className="text-uppercase">/ {typePlan[type]}</span>
+      <span className={`${!normal ? "text-uppercase" : ""}`}>
+        {!normal ? "/" : ""} {typePlan[type]}
+      </span>
     </h5>
   );
 };

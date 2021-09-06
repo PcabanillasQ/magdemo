@@ -3,7 +3,7 @@ import React from "react";
 const IconAlert = ({ icon }) => {
   return (
     <span className="icon-alert">
-      <i className={icon}></i>
+      <img src={icon} alt="Virificado" />
     </span>
   );
 };

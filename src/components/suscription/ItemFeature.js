@@ -1,16 +1,20 @@
 import React from "react";
 
-const ItemFeature = ({ item }) => {
+const ItemFeature = ({ item, icon }) => {
   const { activo, desciption } = item;
   return (
     <li
-      className={`list-group-item d-flex justify-content-between align-items-start ${
-        !activo ? "disabled" : null
+      className={`icon-feature list-group-item d-flex justify-content-between align-items-start ${
+        !activo ? "inactive" : null
       } `}
     >
-      <div className="me-2">
-        <i className="bi bi-check fs-5"></i>
-      </div>
+      {icon ? (
+        <div className="me-1">
+          <span>
+            <img src={icon} alt="icono check" />
+          </span>
+        </div>
+      ) : null}
       {desciption}
     </li>
   );

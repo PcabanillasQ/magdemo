@@ -8,7 +8,6 @@
   position: relative;
   input {
     padding-right: 3rem;
-    
   }
   span {
     transition: right .3s ease-in;
@@ -16,11 +15,13 @@
     right: var(--right-icon-input);
     top: 0;
     display: block;
-    padding: 0 .8rem;
-    i {
-      font-size: 1.5rem;
-      line-height: 1.5;
-   
+    padding: 0.4rem .8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+      width:  2rem;
     }
   }
 }

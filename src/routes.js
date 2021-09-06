@@ -1,6 +1,11 @@
-import Confirmation from "views/Confirmation";
-import PersonalInfo from "views/PersonalInfo";
-import Suscription from "views/Suscription";
+import { lazy } from "react";
+// import Confirmation from "views/Confirmation";
+// import PersonalInfo from "views/PersonalInfo";
+// import Suscription from "views/Suscription";
+
+const Suscription = lazy(() => import("views/Suscription"));
+const PersonalInfo = lazy(() => import("views/PersonalInfo"));
+const Confirmation = lazy(() => import("views/Confirmation"));
 
 const routes = [
   {

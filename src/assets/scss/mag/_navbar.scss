@@ -1,9 +1,19 @@
-.navbar{
+.navbar {
   height: var(--height-navbar);
-  &__icon-back{
-  position: absolute;
-  cursor: pointer;
-  padding:.5rem;
-  margin-left: 1rem;
+  background-color: var(--color-dark);
+  color: #fff;
+  // position: relative;
+  display: flex;
+  align-items: center;
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  &__icon-back {
+    position: absolute;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 1rem;
   }
 }
