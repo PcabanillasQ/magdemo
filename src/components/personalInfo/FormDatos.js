@@ -159,6 +159,6 @@ const FormDatos = ({ price }) => {
       </div>
     </form>
   );
-};
+};;
 
 export default FormDatos;

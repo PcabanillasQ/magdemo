@@ -9,7 +9,7 @@ const Confirmation = lazy(() => import("views/Confirmation"));
 
 const routes = [
   {
-    path: "/suscipcion",
+    path: "/suscripcion",
     name: "Suscribirme",
     back: false,
     component: Suscription,
@@ -20,6 +20,9 @@ const routes = [
     back: true,
     component: PersonalInfo,
   },
+];
+
+export const routesPrivated = [
   {
     path: "/confirmacion",
     name: "Mag",
@@ -27,4 +30,5 @@ const routes = [
     component: Confirmation,
   },
 ];
+
 export default routes;

@@ -13,11 +13,9 @@ const Confirmation = () => {
       <div className="col-sm-12">
         <div className="confirmation px-4 py-5 ">
           <IconAlert icon={IconCheck} />
-
           <div className="h4 mt-4">Bienvenido, has adquirido el</div>
           <h1 className="display-6 fw-bold">{name}</h1>
           <PriceCardPlan price={price} currency="S/" type={type} normal />
-
           <div className="col-lg-10 mx-auto">
             <p className="mb-4">{title}</p>
             <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">

@@ -1,14 +1,15 @@
 import Navbar from "components/shared/Navbar";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import routes from "./routes";
-
+import routes, { routesPrivated } from "./routes";
 
 import { Suspense } from "react";
 import Spinner from "components/shared/Spinner";
 
 import { Provider } from "react-redux";
 import store from "redux/store";
+import PrivateRoute from "components/routes/PrivateRoute";
 
+// const Confirmation = lazy(() => import("views/Confirmation"));
 function App() {
   return (
     <BrowserRouter>
@@ -26,7 +27,15 @@ function App() {
                     component={route.component}
                   />
                 ))}
-                <Redirect to="/suscipcion" />
+                {routesPrivated.map((route, i) => (
+                  <PrivateRoute
+                    exact
+                    key={i}
+                    path={route.path}
+                    component={route.component}
+                  />
+                ))}
+                <Redirect to="/suscripcion" />
               </Switch>
             </div>
           </Suspense>
