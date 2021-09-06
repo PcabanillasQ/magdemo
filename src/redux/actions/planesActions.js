@@ -28,16 +28,20 @@ export const changeBackAct = () => (dispatch) => {
   dispatch({ type: CHANGE_BACK, payload: true });
 };
 
+
+
 export const setPlanSelectedAct = (selected) => async (dispatch, getState) => {
   let { planes } = getState();
-  let planSelected = planes.data[selected];
-  let PlanNotSelected = planes.data.filter(
-    (plan) => plan.id !== planSelected.id
-  );
+  let planSelected = selected;
+
   let namePlanNotSelected = "";
-  if (PlanNotSelected[0] !== undefined) {
-    namePlanNotSelected = PlanNotSelected[0].name;
+  if (planSelected !== undefined) {
+    let planNotSelected = planes.data.filter(
+      (plan) => plan.id !== planSelected.id
+    );
+    namePlanNotSelected = planNotSelected[0].name;
   }
+
   dispatch({
     type: SET_PLAN_SELECTED,
     payload: { planSelected, namePlanNotSelected },

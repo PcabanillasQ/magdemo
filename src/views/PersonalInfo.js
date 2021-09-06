@@ -10,7 +10,7 @@ const PersonalInfo = (props) => {
   const verPlanes = () => {
     history.push("/suscripcion");
   };
-  console.log(Object.keys(planSelected).length);
+
 
   if (Object.keys(planSelected).length === 0)
     return (
@@ -23,7 +23,14 @@ const PersonalInfo = (props) => {
     );
   return (
     <div className="personalInfo">
-      <FormDatos price={planSelected.price} />
+      <FormDatos
+        // price={planSelected.price}
+        children={
+          <button type="submit" className="btn btn-dark btn-lg py-3 mt-4 ">
+            Pagar S/.{planSelected.price}.00
+          </button>
+        }
+      />
       <CardPlanSubscribed planSelected={planSelected} />
     </div>
   );

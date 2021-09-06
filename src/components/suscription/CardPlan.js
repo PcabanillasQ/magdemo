@@ -5,6 +5,7 @@ import { changeBackAct } from "redux/actions";
 import ItemFeature from "./ItemFeature";
 import PriceCardPlan from "./PriceCardPlan";
 import IconCheck from "assets/icons/check.svg";
+import Spinner from "components/shared/Spinner";
 
 const CardPlan = ({ plan, currency, buttonName, color, checked }) => {
   const { price, type, title, features } = plan;
@@ -14,6 +15,7 @@ const CardPlan = ({ plan, currency, buttonName, color, checked }) => {
     dispatch(changeBackAct());
     history.push({ pathname: "/datos" });
   };
+  if (Object.keys(plan).length === 0) return <Spinner />;
   return (
     <div className={`cardPlan shadow-sm ${checked ? "d-none" : null}`}>
       <div className="px-3 pt-2 text-center">

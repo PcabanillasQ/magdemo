@@ -4,44 +4,58 @@ import { useHistory } from "react-router";
 import { addDataCardAct } from "redux/actions/cardActions";
 import IconCreditCart from "assets/icons/credit-card.svg";
 import Input from "./Input";
+import { expRegular, maskFecExp, formatCharsMaskFecExp } from "data/config";
 
-const FormDatos = ({ price }) => {
+const initialState = {
+  fullname: {},
+  serie: {},
+  fecExp: {},
+  cvc: {},
+};
+
+const FormDatos = ({ children, price }) => {
   const dispatch = useDispatch();
   let history = useHistory();
-  const [nombre, setNombre] = useState({ data: "", valid: null });
-  const [cardNum, setCardNum] = useState({ data: "", valid: null });
-  const [fecExp, setFecExp] = useState({ data: "", valid: null });
-  const [codCV, setCodCV] = useState({ data: "", valid: null });
+
+  const [dataForm, setDataForm] = useState(initialState);
   const [error, setError] = useState(false);
-  // const { fullName, serie, fecExp, cvc } = dataForm;
+
   let closeError = null;
+
+  const { fullname, serie, fecExp, cvc } = dataForm;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (nombre.valid && cardNum.valid && fecExp.valid && codCV.valid) {
+    if (fullname.valid && serie.valid && fecExp.valid && cvc.valid) {
       setError(false);
       dispatch(
         addDataCardAct({
-          fullName: nombre.data,
-          serie: cardNum.data,
+          fullName: fullname.data,
+          serie: serie.data,
           fecExp: fecExp.data,
-          cvc: codCV.data,
+          cvc: cvc.data,
         })
       );
     } else {
       setError(true);
       closeError = setTimeout(() => {
-        console.log("se ejecuto el settimeout");
         setError(false);
       }, 7000);
       return null;
     }
-
     history.push("/confirmacion");
   };
 
+  // Cambia el parameto de la segunda cifra del mes
+  let beforeMaskedValueChange = (newState, oldState, userInput) => {
+    let { value } = newState;
+    if (value.startsWith("1")) formatCharsMaskFecExp["2"] = "[0-2]";
+    else formatCharsMaskFecExp["2"] = "[0-9]";
+    return { value, selection: newState.selection };
+  };
+
   useEffect(() => {
-    if (cardNum.valid === true || cardNum.valid === false) {
+    if (serie.valid === true || serie.valid === false) {
       document.documentElement.style.setProperty(
         "--right-icon-input",
         "1.5rem"
@@ -49,95 +63,66 @@ const FormDatos = ({ price }) => {
     } else {
       document.documentElement.style.setProperty("--right-icon-input", "0");
     }
-
     return () => {
       clearTimeout(closeError);
     };
-  }, [cardNum.valid, closeError]);
-  // const handleInput = ({ target: { name, value } }) =>
-  //   setDataCard({ ...dataForm, [name]: value });
-
-  let maskFecExp = "12/34";
-  let formatCharsMaskFecExp = {
-    1: "[0-1]",
-    2: "[0-9]",
-    3: "[2]",
-    4: "[0-9]",
-  };
-
-  const expRegular = {
-    fullName: /^[a-zA-ZÀ-ÿ\s]{3,60}$/, // Letras y espacios, pueden llevar acentos.
-    cvc: /^\d{3}$/,
-    fecExp: /^\d{2}\/\d{2}$/,
-    cardNum: /^[0-9\s]{19}$/,
-  };
+  }, [serie.valid, closeError]);
 
   return (
     <form className="row g-2 formData" onSubmit={handleSubmit}>
       <div className="col-12">
         <Input
-          state={nombre}
-          setState={setNombre}
+          dataForm={dataForm}
+          setDataForm={setDataForm}
           label="Nombres y Apellidos"
           placeholder="Ingrese sus nombres"
           messageHelp=" El nombre debe tener almenos 3 digitos, no se permiten numeros"
           expRegular={expRegular.fullName}
-          name="fullName"
-          // value={fullName}
-          // onChange={handleInput}
+          name="fullname"
           required
         />
       </div>
       <div className="col-12">
         <Input
+          dataForm={dataForm}
+          setDataForm={setDataForm}
           mask="9999 9999 9999 9999"
-          state={cardNum}
-          setState={setCardNum}
           label="Numero de Tarjeta"
           icon={IconCreditCart}
           placeholder=".... .... .... ...."
           messageHelp="El numero de tarjeta debe tener 16 dígitos"
           expRegular={expRegular.cardNum}
           name="serie"
-          // value={fullName}
-          // onChange={handleInput}
           required
         />
-        {/* <InputFormat
-          value={serie}
-          onChange={handleInput}
-        ></InputFormat> */}
       </div>
       <div className="col-6">
         <Input
+          dataForm={dataForm}
+          setDataForm={setDataForm}
           mask={maskFecExp}
-          state={fecExp}
           placeholder="MM/AA"
-          setState={setFecExp}
           label="F. Expira"
           maskChar={null}
           formatChars={formatCharsMaskFecExp}
           messageHelp="la fecha debe tener el siguiente formato"
           expRegular={expRegular.fecExp}
           name="fecExp"
-          // value={fecExp}
-          // onChange={handleInput}
+          beforeMaskedValueChange={beforeMaskedValueChange}
           required
         />
       </div>
       <div className="col-6 ">
         <Input
+          dataForm={dataForm}
+          setDataForm={setDataForm}
           mask="999"
-          state={codCV}
-          setState={setCodCV}
           label="CVC"
           maskChar=""
           messageHelp="El código debe tener 3 digitos"
           expRegular={expRegular.cvc}
           name="cvc"
           step="1"
-          // value={cvc}
-          // onChange={handleInput}
           required
         />
       </div>
@@ -152,13 +137,13 @@ const FormDatos = ({ price }) => {
             por favor revisa que todos los campos sean válidos.
           </div>
         ) : null}
-
-        <button type="submit" className="btn btn-dark btn-lg py-3 mt-4 ">
+        {/* <button type="submit" className="btn btn-dark btn-lg py-3 mt-4 ">
           Pagar S/.{price}.00
-        </button>
+        </button> */}
+        {children}
       </div>
     </form>
   );
-};;
+};
 
-export default FormDatos;
+export default React.memo(FormDatos);

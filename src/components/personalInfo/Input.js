@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import InputMask from "react-input-mask";
 
 const Input = ({
@@ -15,9 +15,11 @@ const Input = ({
   step,
   maskChar = null,
   mask,
-  state = { data: "", valid: null },
-  setState,
+  dataForm,
+  beforeMaskedValueChange,
+  setDataForm,
 }) => {
+  const [state, setState] = useState({ data: "", valid: null });
   const handleChange = ({ target: { value } }) => {
     setState({ ...state, data: value });
   };
@@ -32,6 +34,23 @@ const Input = ({
     }
   };
 
+  const sendData = () => {
+    setDataForm({ ...dataForm, [name]: { ...state } });
+  };
+
+  useEffect(() => {
+    if (icon) {
+      if (state.valid === true || state.valid === false) {
+        document.documentElement.style.setProperty(
+          "--right-icon-input",
+          "1.5rem"
+        );
+      } else {
+        document.documentElement.style.setProperty("--right-icon-input", "0");
+      }
+    }
+  }, [icon, state.valid]);
+
   return (
     <>
       {label && (
@@ -43,18 +62,25 @@ const Input = ({
         {mask ? (
           <>
             <InputMask
-              {...{ placeholder, name, required, maskChar, formatChars }}
-              id={name}
-              aria-describedby="nameHelp"
-              autoComplete="off"
+              {...{
+                placeholder,
+                name,
+                value,
+                required,
+                maskChar,
+                formatChars,
+                beforeMaskedValueChange,
+                mask,
+              }}
               className={`form-control form-control-lg ${
                 state.valid === true ? "is-valid " : ""
               } ${state.valid === false ? "is-invalid " : ""}`}
-              mask={mask}
-              value={value}
+              id={name}
+              aria-describedby="nameHelp"
+              autoComplete="off"
               onChange={handleChange}
               onKeyUp={validate}
-              onBlur={validate}
+              onBlur={sendData}
             />
 
             {icon ? (
@@ -69,7 +95,6 @@ const Input = ({
         ) : (
           <>
             <input
-              // {...{ type, placeholder, value, onChange, name, required }}
               {...{ type, placeholder, name, required, step }}
               className={`form-control form-control-lg ${
                 state.valid === true ? "is-valid " : ""
@@ -79,11 +104,10 @@ const Input = ({
               value={state.data}
               onChange={handleChange}
               onKeyUp={validate}
-              onBlur={validate}
+              onBlur={sendData}
             />
             {icon ? (
               <span>
-                {" "}
                 <img src={icon} alt="icono tarjeta" />
               </span>
             ) : null}

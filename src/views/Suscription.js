@@ -8,9 +8,13 @@ import Spinner from "components/shared/Spinner";
 
 const Suscription = () => {
   const [checked, setChecked] = useState(false);
-
   const dispatch = useDispatch();
-  const { data: planes, loading, error } = useSelector((store) => store.planes);
+  const {
+    data: planes,
+    planSelected,
+    loading,
+    error,
+  } = useSelector((store) => store.planes);
   const namesPlanes = planes.map((plan) => plan.name);
 
   let visible = !checked ? 0 : 1;
@@ -23,9 +27,10 @@ const Suscription = () => {
 
   useEffect(() => {
     const setPlanSeleted = (selected) => dispatch(setPlanSelectedAct(selected));
-    setPlanSeleted(visible);
+    setPlanSeleted(planes[visible]);
     //eslint-disable-next-line
-  }, [planes, visible]);
+  }, [planes, checked]);
+
   return (
     <div className="row">
       <div className="col-sm-12 text-center mb-3">
@@ -35,7 +40,7 @@ const Suscription = () => {
         {error}
         {!loading ? (
           <CardPlan
-            plan={planes[visible]}
+            plan={planSelected}
             currency="S/"
             buttonName={"Suscribirme"}
             color="dark"
